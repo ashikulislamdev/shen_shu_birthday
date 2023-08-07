@@ -44,10 +44,10 @@ class WholeDrawer extends StatelessWidget {
           thickness: 1,
         ),
         DrawerMenuItem(
-          icon: Icons.home_outlined,
+          icon: Icons.format_quote_outlined,
           name: 'Quotes',
-          ontap: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => QuotesPage())),
+          ontap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const QuotesPage())),
         ),
         const SizedBox(height: 10),
         const Divider(
