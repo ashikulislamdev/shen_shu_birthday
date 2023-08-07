@@ -69,6 +69,16 @@ flutter:
     - assets/quotes_bg/
     - assets/icons/
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/shen_shu.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/icons/shen_shu.jpg"
+    background_color: "#F2F2F2"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

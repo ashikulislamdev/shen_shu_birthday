@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   int startTime = 0;
 
   Future<void> startTimer() async {
-    const oneSec = Duration(seconds: 2);
+    const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(
         oneSec,
         (Timer timer) => setState(() {
