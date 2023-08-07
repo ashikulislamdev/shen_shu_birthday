@@ -1,9 +1,9 @@
-import 'dart:math';
-
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:shen_shu_birthday/widgets/custom_app_bar.dart';
+import 'package:shen_shu_birthday/widgets/custom_confitti.dart';
+import 'package:shen_shu_birthday/widgets/custom_text_widget.dart';
 
 class Quote {
   final String title;
@@ -17,25 +17,42 @@ class Quote {
 List<Quote> quotes = [
   Quote(
       title:
-          "The best and most beautiful things in the world cannot be seen or even touched - they must be felt with the heart.",
-      imageUrl: "assets/quotes_bg/q-birthday-cake-decorated.jpg",
-      quote: "Helen Keller"),
-  Quote(
-      title: "The only way to do great work is to love what you do.",
-      imageUrl: "assets/quotes_bg/q-flat-golden.jpg",
-      quote: "Steve Jobs"),
-  Quote(
-      title: "The journey of a thousand miles begins with a single step.",
-      imageUrl: "assets/quotes_bg/q-Happy-Birthday-Friends.jpg",
-      quote: "Lao Tzu"),
-  Quote(
-      title: "The journey of a thousand miles begins with a single step.",
+          "I am wishing you a day that's as unique and extraordinary as you are!",
       imageUrl: "assets/quotes_bg/q-happy-birthday.jpg",
+      quote: "Asikul Islam Sawan"),
+  Quote(
+      title: "I hope your birthday is as sweet as your smile. And the year.",
+      imageUrl: "assets/quotes_bg/q-Happy-Birthday-Friends.jpg",
+      quote: "Rabiul Hassan"),
+  Quote(
+      title: "The journey of a thousand miles begins with a single step.",
+      imageUrl: "assets/quotes_bg/q-flat-golden.jpg",
       quote: "Lao Tzu"),
+  Quote(
+      title:
+          "If you're waiting on your birthday gift, close your eyes and make a wish. Surprise, it's me! Happy birthday!!!",
+      imageUrl: "assets/quotes_bg/q-birthday-cake-decorated.jpg",
+      quote: "Asikul Islam Sawan"),
+  Quote(
+      title:
+          "On your special day, I wish you all the happiness and success in the world. Happy Birthday!",
+      imageUrl: "assets/quotes_bg/q-happy-birthday.jpg",
+      quote: "Rabiul Hassan"),
+  Quote(
+      title:
+          "Sending you love, hugs, and warm wishes on your birthday. Have a wonderful celebration!",
+      imageUrl: "assets/quotes_bg/q-happy-birthday.jpg",
+      quote: "Asikul Islam Sawan"),
+  Quote(
+      title: "生日快樂！願你擁有一年中最快樂的時光，心想事成！",
+      imageUrl: "assets/quotes_bg/q-happy-birthday.jpg",
+      quote: "Asikul Islam Sawan"),
 // Add more quotes here
 ];
 
 class QuotesPage extends StatefulWidget {
+  const QuotesPage({super.key});
+
   @override
   _QuotesPageState createState() => _QuotesPageState();
 }
@@ -75,25 +92,7 @@ class _QuotesPageState extends State<QuotesPage> {
               );
             },
           ),
-          Align(
-            alignment: Alignment.topCenter,
-            child: ConfettiWidget(
-              confettiController: _controllerCenterTop,
-              blastDirection: pi / 2, // radial value - LEFT
-              particleDrag: 0.05, // apply drag to the confetti
-              emissionFrequency: 0.05, // how often it should emit
-              numberOfParticles: 20, // number of particles to emit
-              gravity: 0.05, // gravity - or fall speed
-              shouldLoop: false,
-              colors: const [
-                Colors.green,
-                Colors.blue,
-                Colors.pink
-              ], // manually specify the colors to be used
-              strokeWidth: 1,
-              strokeColor: Colors.white,
-            ),
-          ),
+          CustomConfittiWIdget(controllerCenterTop: _controllerCenterTop),
           Expanded(
             child: ListView.builder(
               itemCount: quotes.length,
@@ -123,27 +122,27 @@ class _QuotesPageState extends State<QuotesPage> {
                           ),
                         ),
                         Positioned(
-                            top: 60,
+                            top: 50,
                             left: 25,
                             right: 25,
-                            child: Center(child: Text(quotes[index].title))),
+                            child: Center(
+                                child: CustomTextWidget(
+                                    text: quotes[index].title))),
                         Positioned(
-                          top: 8,
-                          right: 8,
+                          top: 6,
+                          right: 6,
                           child: GestureDetector(
                             onTap: () {
                               _controllerCenterTop.play();
                             },
-                            child: const CircleAvatar(
-                              child: ImageIcon(
-                                AssetImage("assets/quotes_bg/celebration.png"),
-                                size: 30,
-                                color: Colors.transparent,
-                                // quotes[index].isFavorite
-                                //     ? Icons.favorite
-                                //     : Icons.favorite_border,
-                                // color: Colors.red,
-                              ),
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.black,
+                              child: Center(
+                                  child: Image.asset(
+                                "assets/quotes_bg/celebrate.png",
+                                width: 40,
+                              )),
                             ),
                           ),
                         ),
@@ -179,24 +178,35 @@ class _ImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ExtendedImage.asset(
-              quote.imageUrl,
-              width: double.infinity,
-              //height: 200,
-              fit: BoxFit.cover,
-            ),
-            Text(
-              quote.quote,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 20,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ExtendedImage.asset(
+                quote.imageUrl,
+                width: double.infinity,
+                //height: 200,
+                fit: BoxFit.cover,
               ),
-            ),
-          ],
+              const SizedBox(height: 12),
+              CustomTextWidget(
+                text: quote.title,
+              ),
+              const SizedBox(
+                height: 12,
+              ),
+              Text(
+                "~ ${quote.quote}",
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

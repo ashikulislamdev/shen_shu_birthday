@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
             ClipPath(
               clipper: my_clipper.WaveClipperTwo(),
               child: Container(
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.35,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("assets/3-in-garden.jpg"),
@@ -110,8 +110,8 @@ class _HomePageState extends State<HomePage> {
                       confettiController: confettiCenterRight!,
                       blastDirection: pi, // radial value - LEFT
                       particleDrag: 0.05, // apply drag to the confetti
-                      emissionFrequency: 0.05, // how often it should emit
-                      numberOfParticles: 20, // number of particles to emit
+                      emissionFrequency: 0.06, // how often it should emit
+                      numberOfParticles: 35, // number of particles to emit
                       gravity: 0.08, // gravity - or fall speed
                       shouldLoop: false,
                       colors: const [

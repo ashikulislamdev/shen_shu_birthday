@@ -16,7 +16,23 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       actions: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            showDialog<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Center(
+                      child: Text(
+                    "Mr Shen Shu",
+                  )),
+                  content: Image.asset(
+                    "assets/greduate-pic.jpg",
+                    width: MediaQuery.of(context).size.width * 0.8,
+                  ),
+                );
+              },
+            );
+          },
           child: const CircleAvatar(
             backgroundImage: AssetImage("assets/greduate-pic.jpg"),
             radius: 25,
