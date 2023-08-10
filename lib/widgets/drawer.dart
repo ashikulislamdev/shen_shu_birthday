@@ -3,6 +3,7 @@ import 'package:shen_shu_birthday/pages/developer_page.dart';
 import 'package:shen_shu_birthday/pages/home_page.dart';
 import 'package:shen_shu_birthday/pages/memories_page.dart';
 import 'package:shen_shu_birthday/pages/quotes_page.dart';
+import 'package:shen_shu_birthday/widgets/custom_text_widget.dart';
 
 import 'drawer_item.dart';
 
@@ -19,7 +20,20 @@ class WholeDrawer extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        SizedBox(height: dSize.height / 20),
+        SizedBox(height: dSize.height / 25),
+        const CircleAvatar(
+          radius: 100,
+          backgroundImage: AssetImage("assets/icons/shen_shu.jpg"),
+        ),
+        const SizedBox(height: 10),
+        const Center(child: CustomTextWidget(text: "沈澍 (Shen Shu)")),
+        const SizedBox(height: 10),
+        const Center(child: CustomTextWidget(text: "沈澍生日快乐")),
+        const Divider(
+          color: Colors.black,
+          thickness: 1,
+        ),
+        const SizedBox(height: 10),
         DrawerMenuItem(
           icon: Icons.home_outlined,
           name: 'Home',

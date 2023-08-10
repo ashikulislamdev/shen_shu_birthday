@@ -102,19 +102,20 @@ class DeveloperPage extends StatelessWidget {
                         imageUrl: "assets/icons/youtube_318-183441.png",
                         iconColor: Colors.red,
                         iconSize: 45,
-                        launchingUrl:
-                            "https://www.youtube.com/channel/UC7wYZGlOfgU5x6gcgZZr_Qw"),
+                        launchingUrl: "https://youtu.be/UMspayzN2Ek"),
                     const SizedBox(width: 12),
                     const CustomImageIcon(
                         imageUrl: "assets/icons/web.png",
                         iconSize: 35,
                         iconColor: Colors.black,
-                        launchingUrl: "https://github.com/ashikulislamdev"),
+                        launchingUrl: "https://shenshu.hostsatkania.com/"),
                     const SizedBox(width: 12),
                     InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          launchEmail();
+                        },
                         child: SizedBox(
-                          width: 40,
+                          width: 50,
                           child: Image.asset("assets/icons/next_gmail.png"),
                         ))
                   ],
@@ -250,4 +251,10 @@ launchurl(String targetUrl) async {
   } else {
     throw "cannot launch $url";
   }
+}
+
+launchEmail() async {
+  await launch(
+    'mailto:ashikulislamsawan@gmail.com?subject=Support me&body=',
+  );
 }
